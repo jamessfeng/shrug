@@ -1,0 +1,10 @@
+#!/bin/bash
+
+filename=.shrug
+if [ ! -d "$filename" ]
+then
+	mkdir $filename
+	echo Initialized empty shrug repository in $filename
+else
+	echo shrug-init: error: .shrug already exists
+fi

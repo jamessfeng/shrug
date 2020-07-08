@@ -1,0 +1,2 @@
+Date		Start		Stop		Activity
+8/07/20		21:00		23:00		Understanding the specifications of the assignment and coding shrug-init
