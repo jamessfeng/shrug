@@ -1,0 +1,16 @@
+#!/bin/bash
+if [ ! -d ".shrug" ]
+then
+	echo Use shrug-init before shrug-add 
+	exit 1
+fi
+
+if [ ! -d ".shrug/.index" ]
+then
+	mkdir .shrug/.index
+fi
+
+for file in "$@"
+do
+	cp "$file" ".shrug/.index/"$file""
+done
