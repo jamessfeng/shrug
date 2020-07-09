@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ ! -d ".shrug" ]
+then
+	echo Usage: shrug-init before shrug-show 
+	exit 1
+fi
+
+if [ "$#" != 1 ]
+then
+	echo Usage: -m 'int':'filename'
+	exit 1
+fi
+
+direc=`echo $1 | cut -d ':' -f1`
+file=`echo $1 | cut -d ':' -f2`
+
+cat .shrug/.commit/"$direc"/"$file"

@@ -1,0 +1,41 @@
+#!/bin/bash
+if [ ! -d ".shrug" ]
+then
+	echo Usage: shrug-init before shrug-commit 
+	exit 1
+fi
+
+if [ ! "$1" = "-m" ]
+then
+	echo Usage: -m flag
+	exit 1
+fi
+
+if [ "$#" != 2 ]
+then
+	echo Usage: -m 'message' 
+	exit 1
+fi
+
+if [ ! -d ".shrug/.commit" ]
+then
+	mkdir .shrug/.commit
+fi
+number=`ls .shrug/.commit | wc -l`
+# a=0
+# echo "$number"
+mkdir .shrug/.commit/"$number"
+echo "$2" > .shrug/.commit/"$number"/.message.txt
+
+for file in .shrug/.index/*
+do
+	# echo "$file"
+	newname=`echo "$file" | sed -e s_\.shrug\/\.index\/__g`
+	cp "$file" .shrug/.commit/"$number"/"$newname"
+	# echo "$file" .shrug/.commit/"$number"/"$newname"
+done
+echo Committed as commit "$number"
+
+# echo $1
+# echo $2
+
